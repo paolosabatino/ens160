@@ -7,11 +7,11 @@ The only dependency is smbus2 library
 
 # Power modes
 
-Before delving into simple and advanced usage and patterns, it is important to know that the ENS160 sensor has three modes of operation: **deep sleep**, **idle** and **standard**. 
+Before delving into simple and advanced usage and patterns, it is important to know that the ENS160 chip has three modes of operation: **deep sleep**, **idle** and **standard**. 
 
-The only mode that provides valid data is **standard**, which continuously reads the sensors and produces data to be read by end user.
+The only mode that provides valid data is **standard**, which continuously reads the sensors raw data and produces refined data to be read by end user.
 
-When in **standard** mode, the sensor also heats up due to the built-in heaters that are used to get accurate values from the sensors; this is also makes the chip require more power.
+When in **standard** mode, the chip also heats up due to the built-in heaters that are used to get accurate values from the sensors; this is also makes the chip require more power.
 
 This library provides methods to switch the chip from a mode into another. You can leverage such facility to implement different patterns of operation. This is particularly sensible when the ENS160 chip is physically mounted nearby other temperature/humidity sensors like AHT20 or BMP280.
 
@@ -52,6 +52,6 @@ ens160.shutdown()
 
 More advanced usage is available in the sample scripts:
 
-- **measure.py**: relatively simple script that runs continuously peeking data from the sensor every second
-- **measure_idle.py**: do a reading from the sensor and then put it into **idle** for an amount of time; this kind of behaviour is supposed to reduce the power usage and heat produced by the sensor
+- **measure.py**: relatively simple script that runs continuously peeking data from the ens160 every second
+- **measure_idle.py**: do a reading from the ens160 and then put it into **idle** for an amount of time; this kind of behaviour is supposed to reduce the power usage and heat produced by the chip
 - **measure_irq.py**: similar to measure.py, but more advanced which leverages interrupt request using Linux GPIO sysfs object and poll() syscall in place of simple polling
