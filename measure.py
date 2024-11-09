@@ -19,8 +19,6 @@ bus_id = 1
 bus = SMBus(bus_id)
 ens160 = Ens160(bus, 0x53)
 
-ens160.irq_setup(True)
-
 print("Detected ENS160")
 print("Firmware version: %s" % (ens160.firmware,))
 

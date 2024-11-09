@@ -42,6 +42,8 @@ try:
         # Put the ens160 chip in idle and wait for 60 seconds
         ens160.idle()
         time.sleep(60)
+
+        # Wake up the sensor again and bring it into standard mode to take measurement
         ens160.wakeup()
 
 except KeyboardInterrupt:
